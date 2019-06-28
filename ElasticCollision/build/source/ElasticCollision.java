@@ -16,7 +16,9 @@ public class ElasticCollision extends PApplet {
 
 // visualise a perfectly elastic collision
 
-int digitOfPiNeeded = 4;
+// PI = 3.1415926535
+
+int digitOfPiNeeded = 5;
 int timeSteps = 10000;
 
 // first box
