@@ -1,12 +1,12 @@
 public class Box{
 
-  float xCorr;
+  double xCorr;
   int yCorr;
-  int mass;
-  float velocity;
+  long mass;
+  double velocity;
   int size;
 
-  public Box(float xCorr, int yCorr, int size, int mass, float velocity){
+  public Box(double xCorr, int yCorr, int size, long mass, double velocity){
     this.xCorr = xCorr;
     this.yCorr = yCorr;
     this.mass = mass;
@@ -20,7 +20,7 @@ public class Box{
 
   public void show(int grayscaledColor){
     fill(grayscaledColor);
-    rect(xCorr, yCorr, size, size);
+    rect((float)xCorr,(float)yCorr, size, size);
   }
 
   public void reverseVelocity(){
@@ -37,14 +37,14 @@ public class Box{
   }
 
   public void collideWith(Box other){
-    int m1 = this.mass;
-    int m2 = other.mass;
-    float u1 = this.velocity;
-    float u2 = other.velocity;
-    int massSum = m1 + m2;
+    long m1 = this.mass;
+    long m2 = other.mass;
+    double u1 = this.velocity;
+    double u2 = other.velocity;
+    long massSum = m1 + m2;
 
-    this.velocity = ((float)(m1-m2)/massSum)*u1 + ((float)2*m2/massSum)*u2;
-    other.velocity = ((float)2*m1/massSum)*u1 + ((float)(m2-m1)/massSum)*u2;
+    this.velocity = ((double)(m1-m2)/massSum)*u1 + ((double)2*m2/massSum)*u2;
+    other.velocity = ((double)2*m1/massSum)*u1 + ((double)(m2-m1)/massSum)*u2;
   }
 
 }

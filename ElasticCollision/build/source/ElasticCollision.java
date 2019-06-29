@@ -18,14 +18,14 @@ public class ElasticCollision extends PApplet {
 
 // PI = 3.1415926535
 
-int digitOfPiNeeded = 5;
-int timeSteps = 10000;
+int digitOfPiNeeded = 3;
+long timeSteps = (long)Math.pow(10,digitOfPiNeeded-1);
 
 // first box
 Box boxOne = new Box(200, 150, 50, 1, 0);
 
 // second box
-Box boxTwo = new Box(500, 150, 50, (int) Math.pow(100, digitOfPiNeeded-1), (float)-3/timeSteps);
+Box boxTwo = new Box(350, 150, 50, (long) Math.pow(100, digitOfPiNeeded-1), (double)-3/timeSteps);
 
 int collisionCount = 0;
 
@@ -36,17 +36,15 @@ public void setup(){
 public void draw(){
   background(200); // clears everything
 
-  for(int i=0; i<timeSteps; i++){
+  for(long i=0; i<timeSteps; i++){
     if(boxOne.hasCollidedWith(boxTwo)){
       boxOne.collideWith(boxTwo);
       collisionCount += 1;
-      System.out.println(collisionCount);
     }
 
     if(boxOne.hasCollidedWithLeftWall()){
       boxOne.reverseVelocity();
       collisionCount += 1;
-      System.out.println(collisionCount);
     }
     boxOne.update();
     boxTwo.update();
@@ -54,16 +52,23 @@ public void draw(){
 
   boxOne.show(255);
   boxTwo.show(100);
+  showCollisionCount(0);
+}
+
+public void showCollisionCount(int colorFill){
+  textSize(32);
+  fill(colorFill);
+  text("No. of Collision: " + collisionCount, 50,50);
 }
 public class Box{
 
-  float xCorr;
+  double xCorr;
   int yCorr;
-  int mass;
-  float velocity;
+  long mass;
+  double velocity;
   int size;
 
-  public Box(float xCorr, int yCorr, int size, int mass, float velocity){
+  public Box(double xCorr, int yCorr, int size, long mass, double velocity){
     this.xCorr = xCorr;
     this.yCorr = yCorr;
     this.mass = mass;
@@ -77,7 +82,7 @@ public class Box{
 
   public void show(int grayscaledColor){
     fill(grayscaledColor);
-    rect(xCorr, yCorr, size, size);
+    rect((float)xCorr,(float)yCorr, size, size);
   }
 
   public void reverseVelocity(){
@@ -94,18 +99,18 @@ public class Box{
   }
 
   public void collideWith(Box other){
-    int m1 = this.mass;
-    int m2 = other.mass;
-    float u1 = this.velocity;
-    float u2 = other.velocity;
-    int massSum = m1 + m2;
+    long m1 = this.mass;
+    long m2 = other.mass;
+    double u1 = this.velocity;
+    double u2 = other.velocity;
+    long massSum = m1 + m2;
 
-    this.velocity = ((float)(m1-m2)/massSum)*u1 + ((float)2*m2/massSum)*u2;
-    other.velocity = ((float)2*m1/massSum)*u1 + ((float)(m2-m1)/massSum)*u2;
+    this.velocity = ((double)(m1-m2)/massSum)*u1 + ((double)2*m2/massSum)*u2;
+    other.velocity = ((double)2*m1/massSum)*u1 + ((double)(m2-m1)/massSum)*u2;
   }
 
 }
-  public void settings() {  size(750,300); }
+  public void settings() {  size(1200,300); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "ElasticCollision" };
     if (passedArgs != null) {
