@@ -2,14 +2,19 @@
 
 // PI = 3.1415926535
 
-int digitOfPiNeeded = 3;
+int digitOfPiNeeded = 8;
 long timeSteps = (long)Math.pow(10,digitOfPiNeeded-1);
 
+long mass1 = 1;
+long mass2 = (long) Math.pow(100, digitOfPiNeeded-1);
+
+int initialVelocity = -3; // initial velocity of block 1
+
 // first box
-Box boxOne = new Box(200, 150, 50, 1, 0);
+Box boxOne = new Box(200, 150, 50, mass1, 0);
 
 // second box
-Box boxTwo = new Box(350, 150, 50, (long) Math.pow(100, digitOfPiNeeded-1), (double)-3/timeSteps);
+Box boxTwo = new Box(750, 150, 50, mass2, (double)initialVelocity/timeSteps);
 
 int collisionCount = 0;
 

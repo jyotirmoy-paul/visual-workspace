@@ -3,6 +3,9 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import java.util.*; 
+import java.text.*; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -18,14 +21,19 @@ public class ElasticCollision extends PApplet {
 
 // PI = 3.1415926535
 
-int digitOfPiNeeded = 3;
+int digitOfPiNeeded = 8;
 long timeSteps = (long)Math.pow(10,digitOfPiNeeded-1);
 
+long mass1 = 1;
+long mass2 = (long) Math.pow(100, digitOfPiNeeded-1);
+
+int initialVelocity = -3; // initial velocity of block 1
+
 // first box
-Box boxOne = new Box(200, 150, 50, 1, 0);
+Box boxOne = new Box(200, 150, 50, mass1, 0);
 
 // second box
-Box boxTwo = new Box(350, 150, 50, (long) Math.pow(100, digitOfPiNeeded-1), (double)-3/timeSteps);
+Box boxTwo = new Box(750, 150, 50, mass2, (double)initialVelocity/timeSteps);
 
 int collisionCount = 0;
 
@@ -50,6 +58,7 @@ public void draw(){
     boxTwo.update();
   }
 
+  // actually render the boxes and the text [collision count]
   boxOne.show(255);
   boxTwo.show(100);
   showCollisionCount(0);
@@ -60,6 +69,9 @@ public void showCollisionCount(int colorFill){
   fill(colorFill);
   text("No. of Collision: " + collisionCount, 50,50);
 }
+
+
+
 public class Box{
 
   double xCorr;
@@ -83,6 +95,11 @@ public class Box{
   public void show(int grayscaledColor){
     fill(grayscaledColor);
     rect((float)xCorr,(float)yCorr, size, size);
+
+    // show the mass
+    textSize(16);
+    fill(0);
+    text("M = " + NumberFormat.getInstance().format(this.mass), (float)xCorr, yCorr-10);
   }
 
   public void reverseVelocity(){

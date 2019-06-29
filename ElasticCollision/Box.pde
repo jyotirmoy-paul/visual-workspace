@@ -1,3 +1,6 @@
+import java.util.*;
+import java.text.*;
+
 public class Box{
 
   double xCorr;
@@ -21,6 +24,11 @@ public class Box{
   public void show(int grayscaledColor){
     fill(grayscaledColor);
     rect((float)xCorr,(float)yCorr, size, size);
+
+    // show the mass
+    textSize(16);
+    fill(0);
+    text("M = " + NumberFormat.getInstance().format(this.mass), (float)xCorr, yCorr-10);
   }
 
   public void reverseVelocity(){
