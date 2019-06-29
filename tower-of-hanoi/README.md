@@ -14,6 +14,9 @@ What things you need to run the program on your machine
 ### Testing and Running
 Just execute the file using python3, enter the value of n (number of disc to start with), and the animation of solving the probelm will follow
 
+## Visualization for 6 disks
+![solution](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/tower-of-hanoi/sample/6disks.gif)
+
 ## Build With
 * [Pygame](https://www.pygame.org/news)
 
