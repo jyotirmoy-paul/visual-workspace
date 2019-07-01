@@ -3,18 +3,16 @@
 // PI = 3.1415926535
 
 int digitOfPiNeeded = 8;
-long timeSteps = (long)Math.pow(10,digitOfPiNeeded-1);
+double timeSteps = Math.pow(10,digitOfPiNeeded-1);
 
-long mass1 = 1;
-long mass2 = (long) Math.pow(100, digitOfPiNeeded-1);
-
-int initialVelocity = -3; // initial velocity of block 1
+double mass1 = 1;
+double mass2 = Math.pow(100, digitOfPiNeeded-1);
+int initialVelocity = -3; // initial velocity second block
 
 // first box
-Box boxOne = new Box(200, 150, 50, mass1, 0);
-
+Box boxOne = new Box(new Vector2D(200, 150), new Vector2D(0, 0), 50, mass1);
 // second box
-Box boxTwo = new Box(750, 150, 50, mass2, (double)initialVelocity/timeSteps);
+Box boxTwo = new Box(new Vector2D(500, 150), new Vector2D(initialVelocity/timeSteps, 0), 50, mass2);
 
 int collisionCount = 0;
 
@@ -40,13 +38,13 @@ void draw(){
   }
 
   // actually render the boxes and the text [collision count]
-  boxOne.show(255);
-  boxTwo.show(100);
+  boxOne.render(255);
+  boxTwo.render(100);
   showCollisionCount(0);
 }
 
-void showCollisionCount(int colorFill){
+void showCollisionCount(int c){
   textSize(32);
-  fill(colorFill);
+  fill(c);
   text("No. of Collision: " + collisionCount, 50,50);
 }
