@@ -4,6 +4,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 ## Table of Contents
 - [Tower Of Hanoi](#tower-of-hanoi)
 - [Elastic Collision](#elastic-collision)
+- [Black Rain](#black-rain)
 
 
 ## Tower Of Hanoi
@@ -20,3 +21,9 @@ digits of PI
 * Build with [Processing](https://processing.org/)
 * Sample Visualization for mass ratio :: 1:100,000,000, tracing 5 digits of PI upto 31415 <br>
 ![five](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/ElasticCollision/samples/5.gif)
+
+
+## Black Rain
+* Formation of rain, using a little physics. I've no idea why I have made this.
+* This is what it looks like <br>
+![solution](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/black_rain/sample.gif)
