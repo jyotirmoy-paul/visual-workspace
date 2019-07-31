@@ -4,6 +4,7 @@ import processing.event.*;
 import processing.opengl.*; 
 
 import java.util.Random; 
+import java.lang.Math; 
 
 import java.util.HashMap; 
 import java.util.ArrayList; 
@@ -18,16 +19,19 @@ public class ThrowingDarts extends PApplet {
 
 
 
+
+// DIGITS OF PI: 3.1415926535
+
 final int radius = 150;
 int side = radius*2;
 
-long point_count_inside_circle;
-long total_point_count;
+long numPointsInsideCircle;
+long numPointsTotal;
 
 Random random;
 
 public void setup(){
-  background(255);
+  background(0);
   
 
   translate(width/2, height/2);
@@ -35,7 +39,7 @@ public void setup(){
   // draw the square -- side-length = side
   rectMode(CENTER);
   strokeWeight(1);
-  stroke(0);
+  stroke(255);
   noFill();
   rect(0, 0, side, side);
 
@@ -45,14 +49,35 @@ public void setup(){
   random = new Random();
 }
 
-public void draw(){
+public boolean isInsideCircle(int x, int y){
+  return Math.sqrt(x*x + y*y) <= radius;
+}
 
+public void draw(){
   translate(width/2, height/2);
 
-  int x = random.nextInt(side);
-  int y = random.nextInt(side);
+  int x;
+  int y;
+  double pi = 0;
 
-  point(x, y);
+  for(int i=0; i<100000; i++){
+    x = random.nextInt(side) - radius;
+    y = random.nextInt(side) - radius;
+    numPointsTotal++;
+
+    if(isInsideCircle(x, y)){
+      stroke(255,0,0);
+      numPointsInsideCircle++;
+    } else{
+      stroke(0,255,0);
+    }
+
+    point(x, y);
+
+    pi = 4*((double)numPointsInsideCircle/numPointsTotal);
+  }
+
+  System.out.println("PI: " + pi);
 
 }
   public void settings() {  size(400, 400); }
