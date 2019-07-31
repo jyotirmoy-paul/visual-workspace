@@ -4,6 +4,9 @@ import processing.event.*;
 import processing.opengl.*; 
 
 import java.util.Random; 
+import java.util.ArrayList; 
+import java.util.Collections; 
+import java.util.Comparator; 
 
 import java.util.HashMap; 
 import java.util.ArrayList; 
@@ -20,8 +23,18 @@ public class GiftWrappingAlgorithm extends PApplet {
 
 
 
+
+
+
 final int numberOfPoints = 10;
-PVector[] points = new PVector[numberOfPoints];
+
+// points are kept const as they are used for drawing
+final PVector[] points = new PVector[numberOfPoints];
+
+// contains all the points, but included in convex hull
+ArrayList<PVector> remainingPoints = new ArrayList();
+
+PVector currentPoint;
 
 public void setup(){
   
@@ -31,8 +44,21 @@ public void setup(){
   Random random = new Random();
   for(int i=0; i<numberOfPoints; i++){
     points[i] = new PVector(50 + random.nextInt(width-100), 50 + random.nextInt(height-100));
+    remainingPoints.add(points[i]);
   }
 
+  Collections.sort(remainingPoints, new Comparator<PVector>() {
+    @Override
+    public int compare(PVector o1, PVector o2) {
+        return Float.compare(o1.x, o2.x);
+    }
+});
+
+  // this chooses the left most point
+  currentPoint = remainingPoints.get(0);
+
+
+/*
   float minX = width; // a point's x coordinate can't be at width, that's y choosing this
   PVector leftmostPoint = null;
   // find the left most point
@@ -42,15 +68,17 @@ public void setup(){
       leftmostPoint = p;
     }
   }
+  */
 
   // draw an ellipse encircling the left most point
   stroke(0,255,0);
   strokeWeight(2);
   fill(0,255,0,70);
-  ellipse(leftmostPoint.x, leftmostPoint.y, 20,20);
+  ellipse(currentPoint.x, currentPoint.y, 20,20);
 
 } // setup ends here
 
+// function that draws all the points
 public void drawAllPoints(){
   stroke(0);
   strokeWeight(7);
@@ -61,6 +89,8 @@ public void drawAllPoints(){
 
 public void draw(){
   drawAllPoints();
+
+
 
 
 
