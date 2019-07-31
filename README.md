@@ -24,6 +24,6 @@ digits of PI
 
 
 ## Black Rain
-* Formation of rain, using a little physics. I've no idea why I have made this.
+* Formation of rain, using a little physics. I've no idea why I made this.
 * This is what it looks like <br>
-![solution](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/black_rain/sample.gif)
+<img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/black_rain/sample.gif" alt="sample" width="600" height="300">
