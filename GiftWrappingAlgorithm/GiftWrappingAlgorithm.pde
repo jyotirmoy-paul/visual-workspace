@@ -15,11 +15,27 @@ void setup(){
     points[i] = new PVector(50 + random.nextInt(width-100), 50 + random.nextInt(height-100));
   }
 
-}
+  float minX = width; // a point's x coordinate can't be at width, that's y choosing this
+  PVector leftmostPoint = null;
+  // find the left most point
+  for(PVector p: points){
+    if(p.x < minX){
+      minX = p.x;
+      leftmostPoint = p;
+    }
+  }
+
+  // draw an ellipse encircling the left most point
+  stroke(0,255,0);
+  strokeWeight(2);
+  fill(0,255,0,70);
+  ellipse(leftmostPoint.x, leftmostPoint.y, 20,20);
+
+} // setup ends here
 
 void drawAllPoints(){
   stroke(0);
-  strokeWeight(10);
+  strokeWeight(7);
   for(PVector p: points){
     point(p.x, p.y);
   }
@@ -27,4 +43,7 @@ void drawAllPoints(){
 
 void draw(){
   drawAllPoints();
+
+
+
 }
