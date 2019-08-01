@@ -12,7 +12,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 * Visualize the formation of convex hull for set of points.
 * Build with [Processing](https://processing.org/)
 * Sample formation of convex hull, with 20 points <br>
-![sample](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/GiftWrappingAlgorithm/samples/sample-20-points.gif)
+<img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/GiftWrappingAlgorithm/samples/sample-20-points.gif" alt="sample" width="400" height="300">
 
 
 ## Tower Of Hanoi
