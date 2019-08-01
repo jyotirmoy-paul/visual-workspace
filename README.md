@@ -2,9 +2,16 @@
 Various mathematics / physics / computer science related topics in more intuitive and fun way.
 
 ## Table of Contents
+- [Gift Wrapping Algorithm](#gift-wrapping-algorithm)
 - [Tower Of Hanoi](#tower-of-hanoi)
 - [Elastic Collision](#elastic-collision)
 - [Black Rain](#black-rain)
+
+## Gift Wrapping Algorithm
+* Visualize the formation of convex hull for set of points.
+* Build with [Processing](https://processing.org/)
+* Sample formation of convex hull, with 20 points <br>
+![sample](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/GiftWrappingAlgorithm/sample-20-points.gif)
 
 
 ## Tower Of Hanoi
