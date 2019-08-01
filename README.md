@@ -8,6 +8,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 - [Black Rain](#black-rain)
 
 ## Gift Wrapping Algorithm
+* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/GiftWrappingAlgorithm)
 * Visualize the formation of convex hull for set of points.
 * Build with [Processing](https://processing.org/)
 * Sample formation of convex hull, with 20 points <br>
@@ -15,6 +16,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 
 
 ## Tower Of Hanoi
+* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/tower-of-hanoi)
 * Visualization of "Tower of Hanoi" problem with n discs (1 <= n <= 20)
 * Build with [Pygame](https://www.pygame.org/news)
 * Sample Visualization for 6 disks <br>
@@ -22,6 +24,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 
 
 ## Elastic Collision
+* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/ElasticCollision)
 * Visualization of elastic collisions between two blocks, with one's mass power of 100 times the other one's mass, traces the 
 digits of PI
 * Motivated by this brilliant youtube video by [3Blue1Brown](https://www.youtube.com/watch?v=HEfHFsfGXjs). I wanted to see it for myself.
@@ -31,6 +34,7 @@ digits of PI
 
 
 ## Black Rain
+* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/black_rain)
 * Formation of rain, using a little physics. I've no idea why I made this.
 * This is what it looks like <br>
 <img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/black_rain/sample.gif" alt="sample" width="600" height="300">
