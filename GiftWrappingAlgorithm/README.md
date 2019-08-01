@@ -14,7 +14,7 @@ What things you need to run the program on your machine
 Execute the 'GiftWrappingAlgorithm.pde' file using processing
 
 ## Sample working of algorithm with 20 points
-![sample](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/GiftWrappingAlgorithm/sample-20-points.gif)
+![sample](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/GiftWrappingAlgorithm/samples/sample-20-points.gif)
 
 
 ## Build With
