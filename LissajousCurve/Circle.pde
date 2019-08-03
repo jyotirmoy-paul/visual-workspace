@@ -35,6 +35,7 @@ public class Circle{
     strokeWeight(2);
     ellipse(position.x, position.y, diameter, diameter);
 
+    strokeWeight(1);
     if(lineType == HORIZONTAL_LINE){
       line(pointPosition.x, pointPosition.y, width, pointPosition.y);
     } else{

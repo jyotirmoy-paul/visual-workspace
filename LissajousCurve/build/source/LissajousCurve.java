@@ -16,23 +16,26 @@ public class LissajousCurve extends PApplet {
 
 // Lissajous Curve Table
 
-Circle[] circles;
-int numOfCircles = 1;
-int diameter = 100;
+Circle[] circlesRow;
+Circle[] circlesCol;
+int numCircles = 7;
+int diameter = 90;
 float baseAngularVelocity = 0.015f;
 
 public void setup(){
   
-  circles = new Circle[numOfCircles*2];
-  for(int i=0; i<numOfCircles; i++){
-    circles[i] = new Circle(new PVector(width/2, height/2), diameter, baseAngularVelocity);
+  circlesRow = new Circle[numCircles];
+
+  // instantiate all the circles -- in row
+  for(int i=0; i<numCircles; i++){
+    circlesRow[i] = new Circle(new PVector(150+100*i, 100), diameter, baseAngularVelocity*(i+1));
   }
 
 }
 
 public void drawAllCircles(){
-  for(int i=0; i<numOfCircles; i++){
-    circles[i].draw(Circle.VERTICAL_LINE);
+  for(int i=0; i<numCircles; i++){
+    circlesRow[i].draw(Circle.VERTICAL_LINE);
   }
 }
 
@@ -77,6 +80,8 @@ public class Circle{
     strokeWeight(2);
     ellipse(position.x, position.y, diameter, diameter);
 
+    strokeWeight(1.5f);
+    stroke(0,0,0,255);
     if(lineType == HORIZONTAL_LINE){
       line(pointPosition.x, pointPosition.y, width, pointPosition.y);
     } else{
@@ -85,12 +90,13 @@ public class Circle{
 
     rotatePoint();
     strokeWeight(10);
+    stroke(0);
     point(pointPosition.x, pointPosition.y);
 
   }
 
 }
-  public void settings() {  size(700,700); }
+  public void settings() {  size(800,800); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "LissajousCurve" };
     if (passedArgs != null) {
