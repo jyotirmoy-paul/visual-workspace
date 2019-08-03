@@ -3,6 +3,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 
 ## Table of Contents
 - [Gift Wrapping Algorithm](#gift-wrapping-algorithm)
+- [Lissajous Curve Table](#lissajous-curve-table)
 - [Tower Of Hanoi](#tower-of-hanoi)
 - [Elastic Collision](#elastic-collision)
 - [Black Rain](#black-rain)
@@ -13,6 +14,14 @@ Various mathematics / physics / computer science related topics in more intuitiv
 * Build with [Processing](https://processing.org/)
 * Sample formation of convex hull, with 20 points <br>
 <img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/GiftWrappingAlgorithm/samples/sample-20-points.gif" alt="sample" width="400" height="300">
+
+## Lissajous Curve Table
+* What is [Lissajous Curve](https://en.wikipedia.org/wiki/Lissajous_curve)?
+* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/LissajousCurve)
+* Visualize the formation of various curves by complex harmonic motion - Points on circles having different angular velocities
+* Build with [Processing](https://processing.org/)
+* Sample curve table, with 5 circles <br>
+![solution](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/LissajousCurve/sample/lissajous-curve-table.gif)
 
 
 ## Tower Of Hanoi
