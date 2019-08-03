@@ -1,18 +1,50 @@
 public class Circle{
 
+  public final static int HORIZONTAL_LINE = 0;
+  public final static int VERTICAL_LINE = 1;
+
   private PVector position;
   private int diameter;
+  private int radius;
 
-  public Circle(PVector position, int diameter){
+  private PVector pointPosition;
+  private float angle = -HALF_PI;
+  private float angularVelocity;
+
+  public Circle(PVector position, int diameter, float angularVelocity){
     this.position = position;
     this.diameter = diameter;
+    this.angularVelocity = angularVelocity;
+    this.radius = diameter/2;
+
+    pointPosition = new PVector(position.x + radius*cos(angle), position.y + radius*sin(angle));
   }
 
-  public void draw(int strokeVal, int strokeWeightVal){
+  private void rotatePoint(){
+    angle += angularVelocity;
+    if(angle >= TWO_PI)
+      angle = 0;
+
+    pointPosition.x = position.x + radius*cos(angle);
+    pointPosition.y = position.y + radius*sin(angle);
+  }
+
+  public void draw(int lineType){
     noFill();
-    stroke(strokeVal);
-    strokeWeight(strokeWeightVal);
+    stroke(0);
+    strokeWeight(2);
     ellipse(position.x, position.y, diameter, diameter);
+
+    if(lineType == HORIZONTAL_LINE){
+      line(pointPosition.x, pointPosition.y, width, pointPosition.y);
+    } else{
+      line(pointPosition.x, pointPosition.y, pointPosition.x, height);
+    }
+
+    rotatePoint();
+    strokeWeight(10);
+    point(pointPosition.x, pointPosition.y);
+
   }
 
 }
