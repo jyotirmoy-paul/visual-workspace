@@ -21,11 +21,13 @@ Circle[] circlesCol;
 int numCircles = 7;
 int diameter = 90;
 float baseAngularVelocity = 0.015f;
+Curve[][] curves;
 
 public void setup(){
   
   circlesRow = new Circle[numCircles];
   circlesCol = new Circle[numCircles];
+  curves = new Curve[numCircles][numCircles];
 
   for(int i=0; i<numCircles; i++){
     // instantiate all circles -- in row
@@ -33,6 +35,12 @@ public void setup(){
 
     // instantiate all circles -- in column
     circlesCol[i] = new Circle(new PVector(50, 150+100*i), diameter, baseAngularVelocity*(i+1));
+  }
+
+  for(int i=0; i<numCircles; i++){
+    for(int j=0; j<numCircles; j++){
+      curves[i][j] = new Curve();
+    }
   }
 
 }
@@ -47,6 +55,14 @@ public void drawAllCircles(){
 public void draw(){
   background(255);
   drawAllCircles();
+
+  for(int i=0; i<numCircles; i++){
+    for(int j=0; j<numCircles; j++){
+      curves[i][j].addPoint(circlesRow[i].getPointPosition().x, circlesCol[j].getPointPosition().y);
+      curves[i][j].draw();
+    }
+  }
+
 }
 public class Circle{
 
@@ -95,6 +111,43 @@ public class Circle{
     rotatePoint();
     strokeWeight(10);
     point(pointPosition.x, pointPosition.y);
+
+  }
+
+  public PVector getPointPosition(){
+    return pointPosition;
+  }
+
+}
+class Curve{
+
+  private ArrayList<PVector> path;
+  private PVector currentPoint;
+
+  public Curve(){
+    path = new ArrayList();
+    currentPoint = new PVector(0,0);
+  }
+
+  public void addPoint(float x, float y){
+    path.add(new PVector(x, y));
+    currentPoint.x = x;
+    currentPoint.y = y;
+  }
+
+  public void draw(){
+    noFill();
+    stroke(0);
+    strokeWeight(1);
+
+    beginShape();
+    for(PVector p: path){
+      vertex(p.x, p.y);
+    }
+    endShape();
+
+    strokeWeight(10);
+    point(currentPoint.x, currentPoint.y);
 
   }
 

@@ -5,11 +5,13 @@ Circle[] circlesCol;
 int numCircles = 7;
 int diameter = 90;
 float baseAngularVelocity = 0.015;
+Curve[][] curves;
 
 void setup(){
   size(800,800);
   circlesRow = new Circle[numCircles];
   circlesCol = new Circle[numCircles];
+  curves = new Curve[numCircles][numCircles];
 
   for(int i=0; i<numCircles; i++){
     // instantiate all circles -- in row
@@ -17,6 +19,12 @@ void setup(){
 
     // instantiate all circles -- in column
     circlesCol[i] = new Circle(new PVector(50, 150+100*i), diameter, baseAngularVelocity*(i+1));
+  }
+
+  for(int i=0; i<numCircles; i++){
+    for(int j=0; j<numCircles; j++){
+      curves[i][j] = new Curve();
+    }
   }
 
 }
@@ -31,4 +39,12 @@ void drawAllCircles(){
 void draw(){
   background(255);
   drawAllCircles();
+
+  for(int i=0; i<numCircles; i++){
+    for(int j=0; j<numCircles; j++){
+      curves[i][j].addPoint(circlesRow[i].getPointPosition().x, circlesCol[j].getPointPosition().y);
+      curves[i][j].draw();
+    }
+  }
+
 }
