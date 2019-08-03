@@ -2,13 +2,13 @@
 
 Circle[] circlesRow;
 Circle[] circlesCol;
-int numCircles = 7;
+int numCircles = 8;
 int diameter = 90;
 float baseAngularVelocity = 0.015;
 Curve[][] curves;
 
 void setup(){
-  size(800,800);
+  size(900,900);
   circlesRow = new Circle[numCircles];
   circlesCol = new Circle[numCircles];
   curves = new Curve[numCircles][numCircles];
@@ -44,6 +44,17 @@ void draw(){
     for(int j=0; j<numCircles; j++){
       curves[i][j].addPoint(circlesRow[i].getPointPosition().x, circlesCol[j].getPointPosition().y);
       curves[i][j].draw();
+    }
+  }
+
+  // if the slowest circle completes one rotation --> reset the curves
+  if(circlesRow[0].getAngle() >= 3*PI/2){
+    for(int i=0; i<numCircles; i++){
+      for(int j=0; j<numCircles; j++){
+        curves[i][j].reset();
+        circlesRow[i].setAngle(-HALF_PI);
+        circlesCol[i].setAngle(-HALF_PI);
+      }
     }
   }
 

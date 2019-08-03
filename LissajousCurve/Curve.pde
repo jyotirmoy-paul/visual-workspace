@@ -14,10 +14,14 @@ class Curve{
     currentPoint.y = y;
   }
 
+  void reset(){
+    path.clear();
+  }
+
   void draw(){
     noFill();
     stroke(0);
-    strokeWeight(1);
+    strokeWeight(2);
 
     beginShape();
     for(PVector p: path){

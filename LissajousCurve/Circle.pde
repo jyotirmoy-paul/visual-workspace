@@ -22,9 +22,6 @@ public class Circle{
 
   private void rotatePoint(){
     angle += angularVelocity;
-    if(angle >= TWO_PI)
-      angle = 0;
-
     pointPosition.x = position.x + radius*cos(angle);
     pointPosition.y = position.y + radius*sin(angle);
   }
@@ -35,7 +32,7 @@ public class Circle{
     strokeWeight(2);
     ellipse(position.x, position.y, diameter, diameter);
 
-    strokeWeight(1);
+    strokeWeight(0.5);
     if(lineType == HORIZONTAL_LINE){
       line(pointPosition.x, pointPosition.y, width, pointPosition.y);
     } else{
@@ -50,6 +47,14 @@ public class Circle{
 
   public PVector getPointPosition(){
     return pointPosition;
+  }
+
+  public float getAngle(){
+    return angle;
+  }
+
+  public void setAngle(float angle){
+    this.angle = angle;
   }
 
 }

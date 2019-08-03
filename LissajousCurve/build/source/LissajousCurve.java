@@ -18,7 +18,7 @@ public class LissajousCurve extends PApplet {
 
 Circle[] circlesRow;
 Circle[] circlesCol;
-int numCircles = 7;
+int numCircles = 8;
 int diameter = 90;
 float baseAngularVelocity = 0.015f;
 Curve[][] curves;
@@ -63,6 +63,17 @@ public void draw(){
     }
   }
 
+  // if the slowest circle completes one rotation --> reset the curves
+  if(circlesRow[0].getAngle() >= 3*PI/2){
+    for(int i=0; i<numCircles; i++){
+      for(int j=0; j<numCircles; j++){
+        curves[i][j].reset();
+        circlesRow[i].setAngle(-HALF_PI);
+        circlesCol[i].setAngle(-HALF_PI);
+      }
+    }
+  }
+
 }
 public class Circle{
 
@@ -88,9 +99,6 @@ public class Circle{
 
   private void rotatePoint(){
     angle += angularVelocity;
-    if(angle >= TWO_PI)
-      angle = 0;
-
     pointPosition.x = position.x + radius*cos(angle);
     pointPosition.y = position.y + radius*sin(angle);
   }
@@ -101,7 +109,7 @@ public class Circle{
     strokeWeight(2);
     ellipse(position.x, position.y, diameter, diameter);
 
-    strokeWeight(1);
+    strokeWeight(0.5f);
     if(lineType == HORIZONTAL_LINE){
       line(pointPosition.x, pointPosition.y, width, pointPosition.y);
     } else{
@@ -116,6 +124,14 @@ public class Circle{
 
   public PVector getPointPosition(){
     return pointPosition;
+  }
+
+  public float getAngle(){
+    return angle;
+  }
+
+  public void setAngle(float angle){
+    this.angle = angle;
   }
 
 }
@@ -135,10 +151,14 @@ class Curve{
     currentPoint.y = y;
   }
 
+  public void reset(){
+    path.clear();
+  }
+
   public void draw(){
     noFill();
     stroke(0);
-    strokeWeight(1);
+    strokeWeight(2);
 
     beginShape();
     for(PVector p: path){
@@ -152,7 +172,7 @@ class Curve{
   }
 
 }
-  public void settings() {  size(800,800); }
+  public void settings() {  size(900,900); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "LissajousCurve" };
     if (passedArgs != null) {
