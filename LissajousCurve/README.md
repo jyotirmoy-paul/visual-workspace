@@ -13,7 +13,7 @@ What things you need to run the program on your machine
 ### Testing and Running
 Execute the 'LissajousCurve.pde' file using processing
 
-## Sample working of algorithm with 20 points
+## Sample working of algorithm with 5 points
 ![solution](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/LissajousCurve/sample/lissajous-curve-table.gif)
 
 
