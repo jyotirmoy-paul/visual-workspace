@@ -21,8 +21,7 @@ Various mathematics / physics / computer science related topics in more intuitiv
 * Visualize the formation of various curves by complex harmonic motion - Points on circles having different angular velocities
 * Build with [Processing](https://processing.org/)
 * Sample curve table, with 5 circles <br>
-![solution](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/LissajousCurve/sample/lissajous-curve-table.gif)
-
+<img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/LissajousCurve/sample/lissajous-curve-table.gif" alt="sample" width="500" height="500">
 
 ## Tower Of Hanoi
 * View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/tower-of-hanoi)
