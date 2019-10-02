@@ -15,7 +15,8 @@ import java.io.IOException;
 public class SampleParticleSystem extends PApplet {
 
 private ParticleSystem ps;
-private boolean isMousePressed;
+
+private ArrayList<ParticleSystem> pslist;
 
 // forces for our particle system
 private PVector gravity;
@@ -23,7 +24,8 @@ private PVector windForce;
 
 public void setup(){
   
-  ps = new ParticleSystem(new PVector(width/2, 50));
+  frameRate(9000);
+  pslist = new ArrayList<ParticleSystem>();
 
   // instantiating our forces
   gravity = new PVector(0,0.05f);
@@ -32,33 +34,32 @@ public void setup(){
 
 public void draw(){
   background(255);
-  ps.addParticle();
-  ps.addForce(gravity);
-  ps.run();
 
-  if(isMousePressed){
-    // highlight on mouse press
-    stroke(255,255,0);
-    fill(255,255,0,50);
-    ellipse(mouseX, mouseY, 25, 25);
+  for(ParticleSystem ps: pslist){
 
-    if(mouseX > width/2){
-      // mouse is pressed on the right side of the screen
-      // blow wind on towards the left side
-      ps.addForce(new PVector(-windForce.x, windForce.y));
-    } else{
-      ps.addForce(windForce);
+    ps.addParticle();
+    ps.addForce(gravity);
+    ps.run();
+
+    if(mousePressed && mouseButton == RIGHT){
+      stroke(255,255,0);
+      fill(255,255,0,10);
+      ellipse(mouseX, mouseY, 25, 25);
+      if(mouseX > width/2){
+        ps.addForce(new PVector(-windForce.x, windForce.y));
+      } else{
+        ps.addForce(windForce);
+      }
     }
-  }
 
+  }
 }
 
 public void mousePressed(){
-  isMousePressed = true;
-}
-
-public void mouseReleased(){
-  isMousePressed = false;
+  if(mouseButton == LEFT){
+    // create a new particle system at the mouse position
+    pslist.add(new ParticleSystem(new PVector(mouseX, mouseY)));
+  }
 }
 public class Particle{
 

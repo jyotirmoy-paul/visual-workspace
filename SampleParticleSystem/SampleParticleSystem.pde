@@ -1,5 +1,6 @@
 private ParticleSystem ps;
-private boolean isMousePressed;
+
+private ArrayList<ParticleSystem> pslist;
 
 // forces for our particle system
 private PVector gravity;
@@ -7,7 +8,7 @@ private PVector windForce;
 
 void setup(){
   size(700,500);
-  ps = new ParticleSystem(new PVector(width/2, 50));
+  pslist = new ArrayList<ParticleSystem>();
 
   // instantiating our forces
   gravity = new PVector(0,0.05);
@@ -16,31 +17,30 @@ void setup(){
 
 void draw(){
   background(255);
-  ps.addParticle();
-  ps.addForce(gravity);
-  ps.run();
 
-  if(isMousePressed){
-    // highlight on mouse press
-    stroke(255,255,0);
-    fill(255,255,0,50);
-    ellipse(mouseX, mouseY, 25, 25);
+  for(ParticleSystem ps: pslist){
 
-    if(mouseX > width/2){
-      // mouse is pressed on the right side of the screen
-      // blow wind on towards the left side
-      ps.addForce(new PVector(-windForce.x, windForce.y));
-    } else{
-      ps.addForce(windForce);
+    ps.addParticle();
+    ps.addForce(gravity);
+    ps.run();
+
+    if(mousePressed && mouseButton == RIGHT){
+      stroke(255,255,0);
+      fill(255,255,0,10);
+      ellipse(mouseX, mouseY, 25, 25);
+      if(mouseX > width/2){
+        ps.addForce(new PVector(-windForce.x, windForce.y));
+      } else{
+        ps.addForce(windForce);
+      }
     }
-  }
 
+  }
 }
 
 void mousePressed(){
-  isMousePressed = true;
-}
-
-void mouseReleased(){
-  isMousePressed = false;
+  if(mouseButton == LEFT){
+    // create a new particle system at the mouse position
+    pslist.add(new ParticleSystem(new PVector(mouseX, mouseY)));
+  }
 }
