@@ -1,23 +1,26 @@
 
-private Particle particle;
-private PVector tempForce;
+private PVector gravity;
+
+ArrayList<Particle> plist;
 
 void setup(){
-  size(600,400);
-  particle = new Particle(new PVector(width/2, height/2));
-  tempForce = new PVector(0.02,0.01);
+  size(700,500);
+  gravity = new PVector(0,0.001);
+  plist = new ArrayList<Particle>();
 }
 
 void draw(){
   background(255);
-  particle.run();
+  plist.add(new Particle(width/2));
+  plist.add(new Particle(width/2));
+  plist.add(new Particle(width/2));
 
-}
-
-void mouseClicked(){
-  if(mouseX > width/2){
-    particle.addForce(tempForce);
-  } else{
-    particle.addForce(new PVector(-tempForce.x, -tempForce.y));
+  for(int i=plist.size()-1; i>=0;i--){
+    Particle p = plist.get(i);
+    p.addForce(gravity);
+    p.run();
+    if(p.isDead()){
+      plist.remove(i);
+    }
   }
 }
