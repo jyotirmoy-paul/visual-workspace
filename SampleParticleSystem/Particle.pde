@@ -1,23 +1,22 @@
 public class Particle{
 
-  PVector loc;
+  PVector location;
   PVector velocity;
   PVector acceleration;
 
   private final int RADIUS = 15;
   private int lifespan = 255;
 
-  public Particle(float xPos){
-    this.loc = new PVector(xPos, 50);
-    this.velocity = new PVector(random(-0.6, 0.6),random(-1, 0));
-    this.acceleration = new PVector(0,0);
+  public Particle(PVector location){
+    this.location = location;
+    this.velocity = new PVector(random(-0.6, 0.6), random(-2, 0));
+    this.acceleration = new PVector(0,0); // the acceleration can only be affected by force
   }
 
-  public Particle addForce(PVector force){
+  public void addForce(PVector force){
     // considering mass = 1, we get force = acceleration
     // every force applied to the particle gets added
-    this.acceleration.add(force);
-    return this;
+    acceleration.add(force);
   }
 
   public boolean isDead(){
@@ -26,14 +25,13 @@ public class Particle{
 
   public void run(){
     update();
-    if(!isDead()){
-      draw();
-    }
+    draw();
   }
 
   private void update(){
     velocity.add(acceleration);
-    loc.add(velocity);
+    location.add(velocity);
+    acceleration.mult(0);
     lifespan -= 1;
   }
 
@@ -42,7 +40,7 @@ public class Particle{
     fill(207,207,207,lifespan);
     stroke(54,54,54, lifespan);
     strokeWeight(2);
-    ellipse(loc.x, loc.y, RADIUS, RADIUS);
+    ellipse(location.x, location.y, RADIUS, RADIUS);
   }
 
 }

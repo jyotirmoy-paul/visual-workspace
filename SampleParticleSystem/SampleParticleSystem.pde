@@ -1,26 +1,35 @@
+private ParticleSystem ps;
+private boolean isMousePressed;
 
+// forces for our particle system
 private PVector gravity;
-
-ArrayList<Particle> plist;
+private PVector windForce;
 
 void setup(){
   size(700,500);
-  gravity = new PVector(0,0.001);
-  plist = new ArrayList<Particle>();
+  ps = new ParticleSystem(new PVector(width/2, 50));
+
+  // instantiating our forces
+  gravity = new PVector(0,0.05);
+  windForce = new PVector(0.1, 0);
 }
 
 void draw(){
   background(255);
-  plist.add(new Particle(width/2));
-  plist.add(new Particle(width/2));
-  plist.add(new Particle(width/2));
+  ps.addParticle();
+  ps.addForce(gravity);
+  ps.run();
 
-  for(int i=plist.size()-1; i>=0;i--){
-    Particle p = plist.get(i);
-    p.addForce(gravity);
-    p.run();
-    if(p.isDead()){
-      plist.remove(i);
-    }
+  if(isMousePressed){
+    ps.addForce(windForce);
   }
+
+}
+
+void mousePressed(){
+  isMousePressed = true;
+}
+
+void mouseReleased(){
+  isMousePressed = false;
 }
