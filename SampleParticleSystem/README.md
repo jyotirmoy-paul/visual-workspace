@@ -14,7 +14,7 @@ What things you need to run the program on your machine
 Execute the 'SampleParticleSystem.pde' file using processing
 
 ## Sample working of algorithm with 5 circles
-![sample](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/SampleParticleSystem)
+![sample](https://github.com/jyotirmoy-paul/visual-workspace/blob/master/SampleParticleSystem/samples/sample.gif)
 
 ## Build With
 * [Processing](https://processing.org/)
