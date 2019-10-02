@@ -21,6 +21,11 @@ void draw(){
   ps.run();
 
   if(isMousePressed){
+    // highlight on mouse press
+    stroke(255,255,0);
+    fill(255,255,0,50);
+    ellipse(mouseX, mouseY, 25, 25);
+
     if(mouseX > width/2){
       // mouse is pressed on the right side of the screen
       // blow wind on towards the left side
