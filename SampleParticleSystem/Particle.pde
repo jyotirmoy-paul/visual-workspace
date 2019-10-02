@@ -37,8 +37,8 @@ public class Particle{
 
   private void draw(){
     // drawing a circular particle
-    fill(207,207,207,lifespan);
-    stroke(54,54,54, lifespan);
+    fill(200,200,200,lifespan);
+    stroke(50,50,50, lifespan);
     strokeWeight(2);
     ellipse(location.x, location.y, RADIUS, RADIUS);
   }

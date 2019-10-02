@@ -16,6 +16,7 @@ public class ParticleSystem{
 
   public void addParticle(){
     plist.add(new Particle(origin.get()));
+    plist.add(new Particle(origin.get()));
   }
 
   public void run(){

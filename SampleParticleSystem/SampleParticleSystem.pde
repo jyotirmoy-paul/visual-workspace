@@ -21,7 +21,13 @@ void draw(){
   ps.run();
 
   if(isMousePressed){
-    ps.addForce(windForce);
+    if(mouseX > width/2){
+      // mouse is pressed on the right side of the screen
+      // blow wind on towards the left side
+      ps.addForce(new PVector(-windForce.x, windForce.y));
+    } else{
+      ps.addForce(windForce);
+    }
   }
 
 }

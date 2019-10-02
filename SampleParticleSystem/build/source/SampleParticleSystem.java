@@ -37,7 +37,13 @@ public void draw(){
   ps.run();
 
   if(isMousePressed){
-    ps.addForce(windForce);
+    if(mouseX > width/2){
+      // mouse is pressed on the right side of the screen
+      // blow wind on towards the left side
+      ps.addForce(new PVector(-windForce.x, windForce.y));
+    } else{
+      ps.addForce(windForce);
+    }
   }
 
 }
@@ -88,8 +94,8 @@ public class Particle{
 
   private void draw(){
     // drawing a circular particle
-    fill(207,207,207,lifespan);
-    stroke(54,54,54, lifespan);
+    fill(200,200,200,lifespan);
+    stroke(50,50,50, lifespan);
     strokeWeight(2);
     ellipse(location.x, location.y, RADIUS, RADIUS);
   }
@@ -112,6 +118,7 @@ public class ParticleSystem{
   }
 
   public void addParticle(){
+    plist.add(new Particle(origin.get()));
     plist.add(new Particle(origin.get()));
   }
 
