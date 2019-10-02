@@ -24,7 +24,6 @@ private PVector windForce;
 
 public void setup(){
   
-  frameRate(9000);
   pslist = new ArrayList<ParticleSystem>();
 
   // instantiating our forces
