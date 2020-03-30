@@ -60,4 +60,4 @@ digits of PI
 * View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/Logistic-Regression)
 * Visualization of Logistic-Regression for binary classification using p5.js
 * Head over to : <br>
-<img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/black_rain/sample.gif" alt="sample" width="600" height="300">
+
