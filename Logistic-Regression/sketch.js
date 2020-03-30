@@ -51,7 +51,7 @@ function setup() {
 		fsdataset[i].push(map(dataset[i][1],0,height,0,1));
 		fsdataset[i].push(map(dataset[i][2],0,width,0,1));
 	}
-	console.log(dataset);
+	//console.log(dataset);
 	noLoop();
 	
 }
@@ -80,7 +80,7 @@ function cost(){
 		jval += -1/4 *(Math.log(h[i]) * y[i] + Math.log(1-h[i]) * (1-y[i]));
 		
 	}
-	console.log("jval:::::::",jval);
+	//console.log("jval:::::::",jval);
 	//update Theta
 	for(i=0;i<theta.length;++i){
 		gradient=0;
@@ -136,7 +136,7 @@ function draw() {
 			dataset[i][2],
 			diameter,
 			diameter);
-		console.log(i);
+		//console.log(i);
 	}
 	
 	if(dataset.length>2){
