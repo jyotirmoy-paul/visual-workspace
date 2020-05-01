@@ -2,13 +2,17 @@
 Various mathematics / physics / computer science related topics in more intuitive and fun way.
 
 ## Table of Contents
+- [Logistic Regression](#Logistic-Regression)
 - [Gift Wrapping Algorithm](#gift-wrapping-algorithm)
 - [Particle System](#particle-system)
 - [Lissajous Curve Table](#lissajous-curve-table)
 - [Tower Of Hanoi](#tower-of-hanoi)
 - [Elastic Collision](#elastic-collision)
 - [Black Rain](#black-rain)
-- [Logistic Regression](#Logistic-Regression)
+
+## Logistic Regression
+* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/Logistic-Regression)
+* Visualization of Logistic-Regression for binary classification using p5.js
 
 ## Gift Wrapping Algorithm
 * View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/GiftWrappingAlgorithm)
@@ -54,10 +58,4 @@ digits of PI
 * Formation of rain, using a little physics. I've no idea why I made this.
 * This is what it looks like <br>
 <img src="https://github.com/jyotirmoy-paul/visual-workspace/blob/master/black_rain/sample.gif" alt="sample" width="600" height="300">
-
-
-## Logistic Regression
-* View Project [here](https://github.com/jyotirmoy-paul/visual-workspace/tree/master/Logistic-Regression)
-* Visualization of Logistic-Regression for binary classification using p5.js
-* Head over to : <br>
 
