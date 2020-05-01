@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <title>Logistic-Regression p5.js Sketch</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="sketch.js"></script>
+    <style>
+        html, body{
+            height:100%;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            min-width:100%;
+            min-height:100%;
+            font-family:"Arvo";
+            color: white;
+        }
+
+        #outer{
+            display:flex;
+            flex-wrap: wrap;
+            min-width:100%;
+            min-height:100%;
+            justify-content: center;
+            align-items: center;
+            align-content:stretch;
+            background-color: DodgerBlue;
+            font-size: 1.5rem;
+
+        }
+
+        .main-divs{
+            margin:1rem;
+        }
+
+        .values{
+            overflow-y: auto;
+            max-height: 100px;
+            font-family: "Times New Roman";
+            margin-top:5px;
+        }
+
+        #left-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index:1;
+        }
+        #insn{
+            margin:1rem;
+        }
+        #right-container{
+            display: flex;
+            flex-direction: column;
+            margin:5rem;
+            
+            align-content:stretch;
+            z-index:2;
+        }
+
+
+        #dataset{
+            width:15rem;
+            height: 15rem;
+        
+        }
+        #footer{
+            height:2rem;
+            margin-bottom: 0.5rem;
+            width: 100%;
+            align-self: flex-end;
+            
+            text-align: center;
+            background-color: transparent;
+            color:white;
+        }
+        @media(max-width: 600px){
+
+            #outer{
+                font-size:1rem;
+            }
+            .main-divs{
+                
+                margin-top:0.2rem;
+            }
+            
+            #right-container{
+                margin:4rem 0px;
+            }
+            #footer{
+                
+                position: inherit;
+                
+            }
+        }
+        @media(min-width:1800px) {
+            #outer{
+                font-size:2rem;
+
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div id="outer">
+        <div id="left-container">
+
+            <div id="insn">Click to train the Logistic-Regression model</div>
+        </div>
+        <div id="right-container">
+            <div id="dataset-div" class="main-divs">
+                <span>Original Vs Feature-scaled Examples</span>
+                <div id="dataset-val" class="values">
+                    
+                </div>
+            </div>
+
+            <div id="step-div" class="main-divs">
+                <span> Step-size for Gradient-Descent : </span>
+                <span id="step-val" class="values"></span>
+            </div>
+
+            <div id="param-div" class="main-divs">
+                <span> Parameters </span>
+                <div id="param-val" class="values"></div>
+            </div>
+            <div id="hypo-div" class="main-divs">
+                <span> Hypotheses Vs Labels </span>
+                <div id="hypo-val" class="values"></div>
+            </div>
+            <div id="cost-div" class="main-divs">
+                <span> Cost : </span>
+                <span id="cost-val" class="values"></span>
+            </div>
+        </div>
+        </br>
+        <div id="footer">
+            <span>Designed and Created by 
+                <a href="https://anishk74.github.io/" style="text-decoration:none; color:white">Anish</a>
+            </span>
+        </div>
+    </div>
+
+</body>
+
+</html>
